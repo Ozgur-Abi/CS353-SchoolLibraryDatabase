@@ -1,6 +1,8 @@
 # CS353 Database Systems - Spring 2022
 
+<p> Download Links </p>
 <a href="Group24_design.pdf" download> Design Report </a>
+<p> </p>
 <a href="proposal.pdf" download> Proposal </a>
 
 <h1>Term Project Proposal</h1>
