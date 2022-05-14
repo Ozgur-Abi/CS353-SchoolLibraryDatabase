@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detailed Event Information Page</title>
+  <link th:href="@{/css/eventInfo.css}" rel="stylesheet" />
+
+</head>
+
+<body>
+<div th:replace="navbar/show :: navbar" ></div>
+
+<div class="row">
+  <img class="eventPhoto" src="https://jooinn.com/images/lake-view-65.jpg" alt="event photo">
+  <div class="eventinfo"><p id="eventName" style="font-size: 44px;" th:text="${event.name}">A Career in Strategy & Marketing Consultancy</p>
+    <p id="date" style="font-size: 30px;" th:text="${date}">date</p>
+    <p id="location" style="font-size: 26px;" th:text="${event.location}">location</p>
+
+    <form method="post" th:action="@{/attendances/create/{id}(id=${event.id})}">
+      <button class="registerButton">Register</button>
+    </form>
+
+  </div>
+
+
+</div>
+
+
+
+<div class="bottom">
+
+
+  <div id="buttons">
+    <form style="display: inline; margin-top: 4px" method="post" th:action="@{/attendances/{id}(id=${event.id})}">
+      <button style="margin: 0" th:if="${showAttendance}" class="attendanceButton">Take Attendance</button>
+    </form>
+    <button class="descriptionButton" onclick="displayDescription()">Description</button>
+    <button class="participantsButton" onclick="displayParticipants()">Participants</button>
+  </div>
+
+  <div id="lineWhite"></div>
+  <div id="lineGray"></div>
+
+  <div id="description">
+    <p class="descriptionText" th:text="${event.description}">
+      DESCRIPTION
+    </p>
+  </div>
+
+  <div id="participants">
+    <table th:each="i : ${#numbers.sequence( 0, participants.size(), 4)}">
+      <tr>
+
+        <td th:if="${participants.size()}>=${i}+1">
+          <a th:href="@{/users/{id}(id=${participants.get(i).getId()})}"><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="club photo" /></a>
+          <a class="participant" th:href="@{/users/{id}(id=${participants.get(i).getId()})}" th:text="${participants.get(i).getUsername()}"></a>
+        </td>
+
+        <td th:if="${participants.size()}>=${i}+2">
+          <a th:href="@{/users/{id}(id=${participants.get(i+1).getId()})}"><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="club photo" /></a>
+          <a class="participant" th:href="@{/users/{id}(id=${participants.get(i+1).getId()})}" th:text="${participants.get(i+1).getUsername()}"></a>
+        </td>
+
+        <td th:if="${participants.size()}>=${i}+3">
+          <a th:href="@{/users/{id}(id=${participants.get(i+2).getId()})}"><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="club photo" /></a>
+          <a class="participant" th:href="@{/users/{id}(id=${participants.get(i+2).getId()})}" th:text="${participants.get(i+2).getUsername()}"></a>
+        </td>
+
+        <td th:if="${participants.size()}>=${i}+4">
+          <a th:href="@{/users/{id}(id=${participants.get(i+3).getId()})}"><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="club photo" /></a>
+          <a class="participant" th:href="@{/users/{id}(id=${participants.get(i+3).getId()})}" th:text="${participants.get(i+3).getUsername()}"></a>
+        </td>
+
+      </tr>
+    </table>
+  </div>
+</div>
+
+<script type="text/javascript" th:src="@{/js/eventInfo.js}"></script>
+
+</body>
+</html>

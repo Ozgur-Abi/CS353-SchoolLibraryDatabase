@@ -1,0 +1,381 @@
+/* NAVBAR -------------------------------------------------------*/
+.navigation {
+    width: 1519px;
+    height: 70px;
+    background: #45818F;
+}
+.brand {
+    position: absolute;
+    padding-left: 20px;
+    float: left;
+    line-height: 70px;
+    text-transform: uppercase;
+    font-size: 1.4em;
+}
+.brand a, .brand a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+.nav-container {
+    width: 100%;
+    margin: 0 auto;
+}
+nav {
+    float: right;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    float: left;
+    position: relative;
+}
+nav ul li a, nav ul li a:visited {
+    display: block;
+    padding: 0 20px;
+    line-height: 70px;
+    background: #45818F;
+    color: #fff;
+    text-decoration: none;
+}
+nav ul li a:hover, nav ul li a:visited:hover {
+    background: #3C6D79;
+    color: #fff;
+}
+nav ul li a:not(:only-child):after, nav ul li a:visited:not(:only-child):after {
+    padding-left: 4px;
+    content: " ▾";
+}
+nav ul li ul li {
+    min-width: 190px;
+}
+nav ul li ul li a {
+    padding: 15px;
+    line-height: 20px;
+}
+.nav-dropdown {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+/* Mobile navigation */
+.nav-mobile {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #2A4E56;
+    height: 70px;
+    width: 70px;
+}
+@media only screen and (max-width: 798px) {
+    .nav-mobile {
+        display: block;
+    }
+    nav {
+        width: 100%;
+        padding: 70px 0 15px;
+    }
+    nav ul {
+        display: none;
+    }
+    nav ul li {
+        float: none;
+    }
+    nav ul li a {
+        padding: 15px;
+        line-height: 20px;
+    }
+    nav ul li ul li a {
+        padding-left: 30px;
+    }
+    .nav-dropdown {
+        position: static;
+    }
+}
+@media screen and (min-width: 799px) {
+    .nav-list {
+        display: block !important;
+    }
+}
+#nav-toggle {
+    position: absolute;
+    margin-left: 18px;
+    top: 22px;
+    cursor: pointer;
+    padding: 10px 35px 16px 0;
+}
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: #fff;
+    position: absolute;
+    display: block;
+    content: "";
+    transition: all 300ms ease-in-out;
+}
+#nav-toggle span:before {
+    top: -10px;
+}
+#nav-toggle span:after {
+    bottom: -10px;
+}
+#nav-toggle.active span {
+    background-color: transparent;
+}
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+    top: 0;
+}
+#nav-toggle.active span:before {
+    transform: rotate(45deg);
+}
+#nav-toggle.active span:after {
+    transform: rotate(-45deg);
+}
+#signout {
+    background: #8F4545;
+}
+#signout:hover{
+    background: #833E3E;
+}
+/* user profile page -----------------------------------------------*/
+#gradient{
+    position: absolute;
+    width: 1519px;
+    height: 148px;
+    left: 0;
+    top: 70px;
+    z-index: -1;
+
+    background: linear-gradient(180deg, #45818F 0%, rgba(69, 129, 143, 0) 100%);
+}
+.top img{
+    width: 170px;
+    height: 170px;
+    margin: 40px auto;
+    display: block;
+}
+#profilephoto {
+    position: relative;
+    width: 170px;
+    height: 170px;
+    margin: 40px auto;
+    display: block;
+    background: linear-gradient(224.89deg, #986581 3.15%, #5C729D 100%);
+}
+
+.profilegrey{
+    position: relative;
+    top: -210px;
+    margin: 40px auto;
+    width: 170px;
+    height: 170px;
+    display: block;
+    background: rgba(94, 94, 94, 0.33);
+}
+
+.changeprofile{
+    position: relative;
+    top: -420px;
+    margin: 40px auto;
+    width: 159px;
+    height: 36px;
+    border: none;
+
+    display: block;
+    background: rgba(240, 240, 240, 0.25);
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: Poly, sans-serif;
+
+    font-size: 12.5px;
+    color: #5A5A5A;
+}
+
+.top{
+    height: 240px;
+}
+
+.top p{
+    display: block;
+    text-align: center;
+}
+
+.middle {
+    overflow: hidden;
+    margin: 0 auto;
+    z-index: -1;
+}
+
+.info {
+    float: left;
+    list-style: none;
+    position: relative;
+    top: -10px;
+    left: 40px;
+}
+
+.social {
+    float: right;
+    list-style: none;
+    position: relative;
+    top: -10px;
+    right: 70px;
+    font-weight: bold;
+}
+/* buttons customize --------------------*/
+button {
+    font-family: Poly, sans-serif;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.7;
+}
+
+#eventsButton{
+    width: 100px;
+    height: 48px;
+
+    background: #C8B39E;
+    border: none;
+    border-radius: 15px;
+
+    font-family: Poly, sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+#membershipsButton{
+    width: 200px;
+    height: 48px;
+
+    background: #D69E65;
+    border: none;
+    border-radius: 15px;
+
+    font-family: Poly, sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.eventName{
+    position: relative;
+    font-family: PoetsenOne, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    top: 4px;
+    color: #3C6D79;
+}
+
+.clubName{
+    position: relative;
+    font-family: PoetsenOne, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    top: 4px;
+    color: #3C6D79;
+}
+
+#buttons{
+    position: relative;
+    float: right;
+    margin-right: 10%;
+    margin-top: -20px;
+}
+
+.savebutton{
+    position: absolute;
+    margin-left: 93%;
+    top: 88px;
+    /*width: 79px;*/
+    height: 34px;
+
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #0657A8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+
+    font-family: Poly, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #0657A8;
+}
+
+/* edit boxes ----------------------*/
+textarea {
+    resize: none;
+    padding: 0 0;
+    margin: 8px 8px;
+    border: none;
+    outline: none;
+    background: none;
+    font-family: Poly, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+
+    color: #898989;
+}
+
+.textProperties{
+    background: #F0F0F0;
+    padding-left: 8px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.userNameTextBox{
+    position: relative;
+    top: -230px;
+    margin: 40px auto;
+}
+
+.departmentBox{
+    position: relative;
+    margin-left: 110px;
+    margin-top: -40px;
+}
+
+.DOBbox {
+    position: relative;
+    margin-left: 110px;
+    margin-top: -40px;
+}
+
+.startOfStudiesBox{
+    position: relative;
+    margin-left: 110px;
+    margin-top: -40px;
+}
+
+.emailBox{
+    position: relative;
+    margin-left: 100px;
+}
+
+.instaBox{
+    position: relative;
+    margin-left: 100px;
+}
+
+.linkedinBox{
+    position: relative;
+    margin-left: 100px;
+}

@@ -1,0 +1,178 @@
+* {
+    box-sizing: border-box;
+}
+
+Body {
+    font-family: Calibri, Helvetica, sans-serif;
+    background-color: white;
+    margin: auto;
+}
+
+.row {
+    width: 1500px;
+    margin: auto;
+    height: 400px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.eventPhoto{
+    width: 370px;
+    height: 370px;
+    object-fit: cover;
+    margin-left: 230px;
+    padding-top: 40px;
+    font-family: Georgia, serif;
+}
+
+.eventinfo{
+    margin-left: 60px;
+    text-align: center;
+    display: inline-block;
+}
+
+.registerButton{
+    width: 160px;
+    height: 38px;
+    background: #F9AE65;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    color: white;
+    margin: 30px;
+}
+
+.attendanceButton{
+    width: 160px;
+    height: 38px;
+    background: #bba585;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    color: white;
+    margin-left: 60px;
+    margin-bottom: 60px;
+}
+
+#eventName{
+    width: 580px;
+    font-size: 42px;
+    margin: 30px;
+}
+
+#date{
+    font-size: 28px;
+    margin: 5px;
+}
+
+#location{
+    font-size: 28px;
+    margin: 5px;
+}
+
+#participants {
+    display: none;
+    width: 90%;
+    margin: 20px auto 0;
+}
+#participants table{
+    width: 100%;
+}
+#participants img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+#participants p{
+    margin-top: 0;
+    margin-left: 10px;
+}
+
+#lineWhite {
+    position: relative;
+    width: 100%;
+    height: 15px;
+    margin: 17px auto 0;
+
+    background: #FFFFFF;
+    z-index: 1;
+}
+
+#lineGray {
+    position: relative;
+    width: 92%;
+    height: 2px;
+    margin: -11px auto 0;
+
+    background: #C4C4C4;
+    z-index: 2;
+}
+
+.bottom {
+    overflow: hidden;
+    padding-top: 28px;
+}
+
+.descriptionText{
+    margin-top: 40px;
+    padding-left: 24%;
+    padding-right: 24%;
+    text-align: center;
+}
+
+.participant{
+    position: relative;
+    font-family: PoetsenOne, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    top: 4px;
+    color: #3C6D79;
+}
+
+/* buttons ------------------------ */
+button {
+    font-family: Poly, sans-serif;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.7;
+}
+
+#buttons{
+    position: relative;
+    float: right;
+    margin-right: 15%;
+    margin-top: -20px;
+}
+
+.participantsButton{
+    width: 160px;
+    height: 48px;
+
+    background: #45818F;
+    border: none;
+    border-radius: 15px;
+
+    font-family: Poly, sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.descriptionButton{
+    width: 160px;
+    height: 48px;
+
+    background: #656CB0;
+    border: none;
+    border-radius: 15px;
+
+    font-family: Poly, sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+}

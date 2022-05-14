@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head>
+        <meta charset="UTF-8">
+        <title>Clubs Page</title>
+        <link th:href="@{/css/clubsPageCSS.css}" rel="stylesheet" />
+
+        <meta name= "viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+    </head>
+
+    <body>
+
+    <div th:replace="navbar/show :: navbar" ></div>
+
+    <div class="square"></div>
+    <div class="circle1"></div>
+    <div class="parallelog"></div>
+    <div class="circle2"></div>
+
+    <div class="clubsMainContainer">
+        <ul id="clubsList" th:each="club : ${clubs}">
+            <li class="oneClassElement">
+                <a href=""><img class="clubPhoto" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="club photo"/></a>
+                <a class="clubName" href="" th:text="${club.name}"></a>
+                <div class="buttonsDiv">
+                    <form method="get" th:action="@{/clubs/__${club.id}__}">
+                        <button class= "goToProfilePageButton" type="submit">go to profile</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!--
+    <form class="form-signin" method="get" action="/logout">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Logout</button>
+    </form>
+    -->
+    </body>
+
+</html>
+
+
+

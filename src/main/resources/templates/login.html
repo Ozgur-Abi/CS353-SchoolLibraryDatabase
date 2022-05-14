@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Login Page </title>
+	<style>
+		Body {
+			font-family: Calibri, Helvetica, sans-serif;
+			background-color: white;
+			color: #8C8C8C;
+		}
+		h1{
+			font-size: 36px;
+			color: #923F1C;
+			justify-content: center;
+		}
+		h2{
+			color: gray;
+			font-size: 28px;
+		}
+		div{
+			border: none;
+		}
+		img{
+			padding-top: 60px;
+			width: 450px;
+			height: 450px;
+		}
+		button {
+			background-color: #8C8C8C;
+			color: white;
+			width: 100%;
+			padding: 15px;
+			margin: 10px 0px;
+			border: none;
+			cursor: pointer;
+			border-radius: 25px;
+		}
+		form {
+			border: none;
+			padding-bottom: 50px;
+		}
+		#forgot_password{
+			color: #8C8C8C;
+			text-decoration: none;
+			float:right;
+			font-weight: bold;
+		}
+		#create_account{
+			font-size: 17px;
+			text-decoration: none;
+			color: #8C8C8C;
+			font-weight: bold;
+		}
+		input[type=checkbox]{
+			color: #8C8C8C;
+			background-color: #ccc;
+		}
+
+		input[type=text], input[type=password] {
+			width: 100%;
+			margin: 8px 0;
+			padding: 12px 20px;
+			display: inline-block;
+			background-color: #F3F4F5;
+			border: 0px;
+			border-bottom: 4px solid #8C8C8C;
+			box-sizing: border-box;
+		}
+		button:hover {
+			opacity: 0.7;
+		}
+		.container {
+			padding: 25px;
+			padding-top: 5px;
+		}
+		#parent {
+			display: flex;
+		}
+		#div1 {
+			padding-left: 130px;
+		}
+		#div2 {
+			padding-top: 30px;
+			padding-left: 130px;
+			padding-right: 200px;
+		}
+		.rememberMeBox{
+			margin-top: 8px;
+		}
+		.alert{
+			margin-bottom:3px;
+			font-size: 18px;
+			color: red;
+		}
+		.logo {
+			margin-left: 0;
+			margin-top: 0;
+			height: 500px;
+			width: 500px;
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+<div id="parent">
+	<div id="div1">
+		<img class="logo" src="https://i.ibb.co/pJRhkQR/sigma-logo.png">
+	</div>
+	<div id="div2">
+		<center><h1>Welcome</h1></center>
+		<form method="post" action="/login">
+			<div class="container">
+				<center><h2>Please sign in</h2></center>
+				<div class="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+				<label for="email">Email</label>
+				<input type="text" id="email" name="email" placeholder="Enter Email" required>
+				<label for="password">Password</label>
+				<input type="password" id="password" name="password" placeholder="Enter Password" required>
+				<button type="submit">Login</button>
+				<input class="rememberMeBox" type="checkbox" checked="checked"> Remember me
+				<a id = "forgot_password" href="#forgot_password">Forgot password? </a>
+			</div>
+		</form>
+
+		<form method="get" action="/register">
+			<center style = "font-size: 17px">Don't have an account? <a id = "create_account" href="/register">Create account</a></center>
+		</form>
+	</div>
+
+
+</div>
+</body>
+</html>

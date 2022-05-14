@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Applications Page</title>
+</head>
+<body>
+    This is the applications list
+
+    <ul th:each="application : ${applications}">
+        <li th:text="${application.senderID}"></li>
+        <li th:text="${application.recipientID}"></li>
+    </ul>
+
+</body>
+</html>

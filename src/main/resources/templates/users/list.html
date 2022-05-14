@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <title>Users Page</title>
+  <link th:href="@{/css/clubsPageCSS.css}" rel="stylesheet" />
+
+  <meta name= "viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+</head>
+
+<body>
+
+<div th:replace="navbar/show :: navbar" ></div>
+
+<div class="square"></div>
+<div class="circle1"></div>
+<div class="parallelog"></div>
+<div class="circle2"></div>
+
+<div class="clubsMainContainer">
+  <ul id="clubsList" th:each="user : ${users}">
+    <li class="oneClassElement">
+      <a href=""><img class="clubPhoto" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="club photo"/></a>
+      <a class="clubName" href="" th:text="${user.email}"></a>
+      <div class="buttonsDiv">
+        <form method="get" th:action="@{/users/__${user.id}__}">
+          <button class= "goToProfilePageButton" type="submit">go to profile</button>
+        </form>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<script src="../../static/js/usersList.js"></script>
+
+</body>
+
+</html>

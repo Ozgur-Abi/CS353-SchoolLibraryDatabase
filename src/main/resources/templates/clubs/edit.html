@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Club Profile Page</title>
+    <link rel="stylesheet" href="../../static/css/editClubProfilePageCSS.css" />
+    <style>
+        Body {
+            font-family: Calibri, Helvetica, sans-serif;
+            background-color: white;
+            color: #8C8C8C;
+            margin: auto;
+        }
+        .coverphoto {
+            position: absolute;
+            width:1519px;
+            height: 210px;
+            margin-left: 0px;
+            top: 70px;
+            background: linear-gradient(270deg, #BA7777 0%, #DEAA76 102.33%);
+        }
+        .profilephoto {
+            position: absolute;
+            width: 135px;
+            height: 135px;
+            margin-left: 34px;
+            top: 251px;
+            background: linear-gradient(224.89deg, #986581 3.15%, #5C729D 100%);
+        }
+    </style>
+</head>
+
+<body>
+<div class="coverphoto"><img id="coverid" src="" alt="cover photo"/></div>
+<div class="covergrey"></div>
+
+<div class="profilephoto"><img id="profileid" src="" alt="profile photo"/></div>
+<div class="profilegrey"></div>
+
+<button class= "savebutton" type="submit">save</button>
+<button class= "changeprofile" type="submit">change profile photo</button>
+<button class= "changecover" type="submit">change cover photo</button>
+
+<div class="descriptionbox">
+    <textarea rows="3" cols="63" th:text="${club.description}"></textarea>
+</div>
+
+<div class="clubnamebox">
+    <textarea rows="1" cols="24" th:text="${club.name}""></textarea>
+</div>
+
+<p class = "activemembernum" th:text="${club.activeMembers.length} + 'Active Members' "></p>
+
+<section class="navigation">
+    <div class="nav-container">
+        <div class="brand">
+            <a href="#!">Sigma</a>
+        </div>
+        <nav>
+            <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+            <ul class="nav-list">
+                <li>
+                    <a href="#!">Clubs</a>
+                </li>
+                <li>
+                    <a href="#!">Events</a>
+                </li>
+                <li>
+                    <a href="#!">Schedule</a>
+                </li>
+                <li>
+                    <a href="#!">Profile</a>
+                </li>
+                <li>
+                    <a id="signout" href="#!">Sign Out</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+</body>
+</html>

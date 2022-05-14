@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <title>Profile Page</title>
+    <link th:href="@{/css/userProfilePage.css}" rel="stylesheet" />
+    <style>
+        Body {
+            font-family: Calibri, Helvetica, sans-serif;
+            background-color: white;
+            color: #8C8C8C;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div th:replace="navbar/show :: navbar" ></div>
+
+<div id="gradient"></div>
+
+<div class="top">
+    <img id="profilephoto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4W6xgInhHMPzfDvsq0YvMXgYUJlqzOjM1dA&usqp=CAU" alt="profile photo"/>
+    <p th:text="${user.username}"></p>
+</div>
+
+
+<div class="middle">
+    <ul class="info">
+        <li th:text="'Department: ' + ${user.department}"></li>
+        <li th:text="'Date of Birth: ' + ${dateOfBirth}"></li>
+        <li th:text="'Start of studies: ' + ${user.startOfStudies}"></li>
+        <li th:text="'Participated in ' + ${#lists.size(attendedevents)} + ' events'"></li>
+        <li th:text="'About me: ' + ${user.description}"></li>
+    </ul>
+    <ul class="social">
+        <li th:text="'email: ' + ${user.email}"></li>
+        <li> instagram: <a th:href="${'https://www.instagram.com/' + user.instagramUsername}" th:text="${user.instagramUsername}"></a> </li>
+        <li th:text="'linkedin: ' + ${user.linkedinUsername}"></li>
+    </ul>
+</div>
+
+<div class="bottom">
+    <div id="buttons"><button id="eventsButton" onclick="openEvents()">Events</button>
+        <button id="membershipsButton" onclick="openMemberships()">Active Memberships</button></div>
+    <div id="lineWhite"></div>
+    <div id="lineGray"></div>
+    <div id="events">
+        <table>
+            <tr>
+                <td th:each="attendedevent: ${attendedevents}">
+					<p class = "clubName"><th:block th:text="${attendedevent.name}"> </th:block> </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="memberships">
+        <table>
+            <tr>
+                <td th:each="club: ${clubs}">
+					<p class = "clubName"><th:block th:text="${club.name}"> </th:block> </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/js/userProfilePage.js}"></script>
+
+<button class= "editButton" type="submit">edit</button>
+
+</body>
+
+</html>

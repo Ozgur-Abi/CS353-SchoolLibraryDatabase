@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/%22%3E">
+<head>
+    <title>Club Profile Page</title>
+    <link rel="stylesheet" href="../../static/css/clubProfilePageCSS.css" />
+    <style>
+        Body {
+            font-family: Calibri, Helvetica, sans-serif;
+            background-color: white;
+            color: #8C8C8C;
+            margin: auto;
+        }
+        .coverphoto {
+            position: absolute;
+            width:1519px;
+            height: 210px;
+            margin-left: 0px;
+            margin-top: 70px;
+            background: linear-gradient(270deg, #BA7777 0%, #DEAA76 102.33%);
+        }
+        .profilephoto {
+            position: absolute;
+            width: 135px;
+            height: 135px;
+            margin-left: 34px;
+            margin-top: 251px;
+            background: linear-gradient(224.89deg, #986581 3.15%, #5C729D 100%);
+        }
+    </style>
+</head>
+
+<body>
+<div class="coverphoto"><img id="coverid" src="" alt="cover photo"/></div>
+
+<div class="profilephoto"><img id="profileid" src="" alt="profile photo"/></div>
+
+<button class= "followbutton" type="submit">follow</button>
+<button class= "requestactivemembershipbutton" type="submit">request active membership</button>
+<button class= "createeventbutton" type="submit">create event</button>
+
+<div class = "clubname" th:text="${club.name}"></div>
+
+<div id="description" th:text="${club.description}"></div>
+
+<!--
+<p class = "activemembernum" th:text="${club.activeMembers.length} + 'Active Members' "></p>
+-->
+
+<div th:replace="navbar/show :: navbar" ></div>
+
+<!--
+<div id="upcomingevents">
+    <p class="eventstitle">Upcoming events:</p>
+    <ul class="eventslist">
+        <li class="event1" th="event : ${futureEvents.[0]}">
+            <a href=""><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="event photo"  style="width: 232px; height: 154px; object-fit: cover;" /></a>
+            <a class="eventname" href="" th:text="${event.name}"></a>
+            <p class="eventdate" th:text="${event.date}"></p>
+        </li>
+        <li class="event2" th="event : ${futureEvents.[1]}">
+            <a href=""><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="event photo"  style="width: 232px; height: 154px; object-fit: cover;" /></a>
+            <a class="eventname" href="" th:text="${event.name}"></a>
+            <p class="eventdate" th:text="${event.date}"></p>
+        </li>
+        <li class="event3" th="event : ${futureEvents.[2]}">
+            <a href=""><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="event photo"  style="width: 232px; height: 154px; object-fit: cover;" /></a>
+            <a class="eventname" href="" th:text="${event.name}"></a>
+            <p class="eventdate" th:text="${event.date}"></p>
+            <a class="more" href="">more</a>
+        </li>
+    </ul>
+</div>
+<div id="pastevents">
+    <p class="eventstitle">Past events:</p>
+    <ul class="eventslist">
+        <li class="event1" th="event : ${pastEvents.[0]}">
+            <a href=""><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="event photo"  style="width: 232px; height: 154px; object-fit: cover;" /></a>
+            <a class="eventname" href="" th:text="${event.name}"></a>
+            <p class="eventdate" th:text="${event.date}"></p>
+        </li>
+        <li class="event2" th="event : ${pastEvents.[1]}">
+            <a href=""><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="event photo"  style="width: 232px; height: 154px; object-fit: cover;" /></a>
+            <a class="eventname" href="" th:text="${event.name}"></a>
+            <p class="eventdate" th:text="${event.date}"></p>
+        </li>
+        <li class="event3" th="event : ${pastEvents.[2]}">
+            <a href=""><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="event photo"  style="width: 232px; height: 154px; object-fit: cover;" /></a>
+            <a class="eventname" href="" th:text="${event.name}"></a>
+            <p class="eventdate" th:text="${event.date}"></p>
+            <a class="more" href="">more</a>
+        </li>
+    </ul>
+</div>
+-->
+
+<!--<p class="activememberlisttitle">Active Members:</p>
+<div class="maincontainer">
+    <ul id="activemembers" th:each="user : ${activeMembers}">
+        <li>
+            <a class="username" href="" th:text="${user.name}"></a>
+        </li>
+    </ul>
+</div>-->
+
+<!--<p class="requestlisttitle">Active Membership Requests:</p>
+<div class="secondcontainer" th:each="user : ${activeMembershipRequests}">
+    <ul id="requests">
+        <li>
+            <a class="username" href="" th:text="${user.name}"></a>
+            <button class= "acceptbutton" type="submit">🗸</button>
+            <button class= "rejectbutton" type="submit">✖</button>
+        </li>
+    </ul>
+</div>-->
+
+<button>
+    <div class="pencil">
+        <div class="triangle"></div>
+        <div class="rec1"></div>
+        <div class="rec2"></div>
+        <div class="rec3"></div>
+    </div>
+</button>
+
+</body>
+</html>

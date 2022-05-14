@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <title>Club Profile Page</title>
+    <link th:href="@{/css/clubProfilePageCSS.css}" rel="stylesheet" />
+</head>
+
+<body>
+<div class="coverphoto"><img id="coverid" src="" /></div>
+
+<div class="profilephoto"><img id="profileid" src="" alt="profile photo"/></div>
+
+
+<!-- <button class="followbutton" type="submit" >follow</button> -->
+<form method="POST" th:action="@{/clubs/{id}/applications(id=${club.id})}" th:if="${role}==6">
+    <button class="requestactivemembershipbutton" type="submit" name="submit" value="value" >request active membership</button>
+</form>
+<form method="POST" th:action="@{/clubs/{id}/applications/resign(id=${club.id})}" th:if="${role}==2">
+    <button class="requestactivemembershipbutton" type="submit" name="submit" value="value" >resign from active membership</button>
+</form>
+<a th:if="${role}<=1" href="/events/create" class="createeventbutton">create event</a>
+<a th:if="${role}==0 or ${role}==3" href="/financeTable" class="goToFinanceTablePageButton">view finance table</a>
+
+
+
+<div class ="clubname" th:text="${club.name}"></div>
+
+<div id="description" th:text="${club.description}"></div>
+
+
+<p class = "activemembernum" th:text="${#lists.size(activeMembers)} + ' Active Members' "></p>
+
+
+<div th:replace="navbar/show :: navbar" ></div>
+
+
+<div id="upcomingevents">
+    <p class="eventstitle">Upcoming events:</p>
+    <ul class="eventslist">
+        <li class="event1" th:if="${!upcomingEvents.isEmpty()}">
+            <a th:href="@{/events/{id}(id=${upcomingEvents.get(0).getId()})}"><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="event photo"  style="width: 232px; height: 154px; object-fit: cover;" /></a>
+            <a class="eventname" th:href="@{/events/{id}(id=${upcomingEvents.get(0).getId()})}" th:text="${upcomingEvents.get(0).name}"></a>
+            <p class="eventdate" th:text="${upcomingEvents.get(0).location}"></p>
+        </li>
+        <li class="event2" th:if="${upcomingEvents.size() >= 2}">
+            <a th:href="@{/events/{id}(id=${upcomingEvents.get(1).getId()})}"><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="event photo"  style="width: 232px; height: 154px; object-fit: cover;" /></a>
+            <a class="eventname" th:href="@{/events/{id}(id=${upcomingEvents.get(1).getId()})}" th:text="${upcomingEvents.get(1).name}"></a>
+            <p class="eventdate" th:text="${upcomingEvents.get(1).location}"></p>
+        </li>
+        <li class="event3" th:if="${upcomingEvents.size() >= 3}">
+            <a th:href="@{/events/{id}(id=${upcomingEvents.get(2).getId()})}"><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="event photo"  style="width: 232px; height: 154px; object-fit: cover;" /></a>
+            <a class="eventname" th:href="@{/events/{id}(id=${upcomingEvents.get(2).getId()})}" th:text="${upcomingEvents.get(2).name}"></a>
+            <p class="eventdate" th:text="${upcomingEvents.get(2).location}"></p>
+            <a class="more" href="">more</a>
+        </li>
+    </ul>
+</div>
+<div id="pastevents">
+    <p class="eventstitle">Past events:</p>
+    <ul class="eventslist">
+        <li class="event1" th:if="${pastEvents.size() >= 1}">
+            <a th:href="@{/events/{id}(id=${pastEvents.get(0).getId()})}"><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="event photo"  style="width: 232px; height: 154px; object-fit: cover;" /></a>
+            <a class="eventname" th:href="@{/events/{id}(id=${pastEvents.get(0).getId()})}" th:text="${pastEvents.get(0).name}"></a>
+            <p class="eventdate" th:text="${pastEvents.get(0).location}"></p>
+        </li>
+        <li class="event2" th:if="${pastEvents.size() >= 2}">
+            <a th:href="@{/events/{id}(id=${pastEvents.get(1).getId()})}"><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="event photo"  style="width: 232px; height: 154px; object-fit: cover;" /></a>
+            <a class="eventname" th:href="@{/events/{id}(id=${pastEvents.get(1).getId()})}" th:text="${pastEvents.get(1).name}"></a>
+            <p class="eventdate" th:text="${pastEvents.get(1).location}"></p>
+        </li>
+        <li class="event3" th:if="${pastEvents.size() >= 3}">
+            <a th:href="@{/events/{id}(id=${pastEvents.get(2).getId()})}"><img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="event photo"  style="width: 232px; height: 154px; object-fit: cover;" /></a>
+            <a class="eventname" th:href="@{/events/{id}(id=${pastEvents.get(2).getId()})}" th:text="${pastEvents.get(2).name}"></a>
+            <p class="eventdate" th:text="${pastEvents.get(2).location}"></p>
+            <a class="more" href="">more</a>
+        </li>
+    </ul>
+</div>
+
+
+<p class="activememberlisttitle">Active Members:</p>
+<div class="maincontainer">
+    <table id="activemembers" th:each="user : ${activeMembers}">
+        <tr><a class="username" th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getUsername()}"></a></tr>
+    </table>
+</div>
+
+<div th:if="${role}<=1">
+    <p class="requestlisttitle" >Active Membership Requests:</p>
+    <div class="secondcontainer">
+        <ul id="requests" th:each="user : ${activeMembershipRequests}">
+            <li>
+                <a class="username" th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getUsername()}"></a>
+                <form method="POST" th:action="@{/clubs/{id}/applications/approve(id=${club.id})}">
+                    <button class= "acceptbutton" type="submit" th:name="userid" th:value="${user.getId()}">🗸</button>
+                </form>
+                <form method="POST" th:action="@{/clubs/{id}/applications/reject(id=${club.id})}">
+                    <button class= "rejectbutton" type="submit" th:name="userid" th:value="${user.getId()}">✖</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<button th:if="${role}<=1">
+    <button class= "editButton" type="submit">edit</button>
+</button>
+
+</body>
+</html>

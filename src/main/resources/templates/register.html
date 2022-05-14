@@ -1,0 +1,142 @@
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+	<title> Register Page </title>  
+	<style>   
+		Body {  
+		  font-family: Calibri, Helvetica, sans-serif;  
+		  background-color: white;  
+		  color: #8C8C8C;
+		}  
+		h1{
+			font-size: 36px;
+			color: #923F1C;
+			justify-content: center;
+		}
+		h2{
+			color: gray;
+			font-size: 28px;
+		}
+		div{
+			border: none;   
+		}
+		img{
+			padding-top: 60px;
+			width: 450px;
+			height: 450px;
+		}
+		button {   
+			background-color: #8C8C8C;  
+			color: white;
+			width: 100%;  
+			color: 8C8C8C;   
+			padding: 15px;   
+			margin: 10px 0px;   
+			border: none;   
+			cursor: pointer;   
+			border-radius: 25px;
+		}   
+		form {   
+			border: none;   
+			padding-bottom: 20px;
+		} 
+		#forgot_password{
+			color: #8C8C8C;
+			text-decoration: none;
+			float:right;
+			font-weight: bold;
+		}
+		#create_account{
+			font-size: 17px;
+			text-decoration: none;
+			color: #8C8C8C;
+			font-weight: bold;
+		}
+		input[type=checkbox]{
+			color: #8C8C8C;
+			background-color: #ccc;
+		}
+		
+		input[type=text], input[type=password] {   
+			width: 100%;   
+			margin: 8px 0;  
+			padding: 12px 20px;   
+			display: inline-block;  
+			background-color: #F3F4F5;
+			border: 0px;
+			border-bottom: 4px solid #8C8C8C;   
+			box-sizing: border-box;   
+		}  
+		button:hover {   
+			opacity: 0.7;   
+		}    	
+		.container {   
+			padding-left: 25px;
+			padding-top: -15px;
+		}   
+		#parent {
+			display: flex;
+		}
+		#div1 {
+			padding-left: 110px;
+		}
+		#div2 {
+			padding-left: 100px;
+			padding-right: 200px;
+		}
+		.logo {
+			margin-left: 0;
+			margin-top: 0;
+			height: 500px;
+			width: 500px;
+			z-index: 1;
+		}
+		.editText{
+			padding-top: 20px;
+			margin-top: 30px;
+			margin-bottom: 40px;
+		}
+		.alert{
+			margin-bottom:3px;
+			font-size: 18px;
+			color: red;
+		}
+</style>   
+</head>    
+<body>    
+	<div id="parent">
+		<div id="div1">
+			<img class="logo" src="https://i.ibb.co/pJRhkQR/sigma-logo.png">
+		</div>
+	<div id="div2">
+	<center><h1>Welcome</h1></center>
+    <form method="post" action="/register">
+        <div class="container">   
+			<center><h2>Create account</h2></center>
+			<div class="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+            <label>Email</label>   
+            <input type="text" id="email" placeholder="email" name="email" required>
+			<label>Username</label>
+			<input type="text" id="username" placeholder="username" name="username" required>
+            <label>Password</label>   
+            <input type="password" id="password" placeholder="password" name="password" required>
+			<label>Department</label>
+			<input type="text" id="department" placeholder="department" name="department" required>
+			<label class="editText">Date Of Birth</label>
+			<input type="date" id="dateOfBirth" placeholder="dateOfBirth" name="dateOfBirth" >
+			<label class="editText">Start Of Studies</label>
+			<input type="number" id="startOfStudies" placeholder="Start of studies" name="startOfStudies" >
+			<label>Instagram Username</label>
+			<input class="editText" type="text" id="instagramUsername" placeholder="instagram Username" name="instagramUsername" >
+			<label>LinkedIn Username</label>
+			<input type="text" id="linkedinUsername" placeholder="linkedin Username" name="linkedinUsername" >
+            <button type="submit">Register</button>    
+        </div> 
+	</form>
+	<center style = "font-size: 17px">Already have an account? <a id = "create_account" href="/login">Login here</a></center>
+	</div> 
+	
+	</div>	
+</body>     
+</html>  

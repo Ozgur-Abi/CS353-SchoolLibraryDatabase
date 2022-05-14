@@ -1,0 +1,146 @@
+/* buttons -------------------------------------------------------*/
+.goToProfilePageButton{
+    position: relative;
+    margin-left: 760px;
+    top: 34px;
+    height: 48px;
+    width: 124px;
+
+    background: #FCD7B2;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+
+    font-family: Poly, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 21px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #A77A4C;
+}
+
+button {
+    font-family: Poly, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+
+    color: #FFFFFF;
+}
+
+button:hover {
+    opacity: 0.7;
+}
+
+/* club -------------------------------------------------------*/
+.clubsMainContainer{
+    margin: auto;
+    margin-top: 80px;
+    width: 900px;
+    background: none;
+}
+
+#clubsList{
+    padding: 0;
+}
+
+.oneClassElement{
+    position: relative;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width: 900px;
+    border-bottom: solid;
+    border-bottom-color: rgba(196, 196, 196, 0.5);
+}
+
+.clubPhoto{
+    position: relative;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    margin-left: 20px;
+    top: 24%;
+}
+.clubName{
+    position: relative;
+    font-size: 30px;
+    font-family: Prociono, sans-serif;
+    margin-left: 35px;
+    top: 8%;
+    text-decoration: none;
+    color: #737373;
+}
+
+#clubsList li{
+    padding-left: 0;
+    list-style-type: none;
+    margin-top: 0;
+    height: 130px;
+}
+
+.buttonsDiv{
+    position: absolute;
+    top: 0;
+}
+
+.square{
+    position: fixed;
+    width: 192.06px;
+    height: 191.6px;
+    left: -44px;
+    top: 350px;
+
+    background: rgba(148, 167, 172, 0.5);
+    transform: rotate(-28.33deg);
+}
+
+.circle1{
+    position: fixed;
+    width: 209px;
+    height: 217px;
+    left: 23px;
+    top: 495px;
+
+    border-radius: 50%;
+    background: rgba(249, 174, 101, 0.5);
+}
+
+.parallelog{
+    position: fixed;
+    width: 186px;
+    height: 190px;
+    left: 1290px;
+    top: 570px;
+
+    transform: skew(-20deg) rotate(-130deg);
+    background: rgba(69, 129, 143, 0.44);
+}
+
+.circle2{
+    position: fixed;
+    width: 210px;
+    height: 190px;
+    left: 1300px;
+    top: 430px;
+
+    border-radius: 50%;
+    background: rgba(214, 158, 101, 0.47);
+    transform: rotate(42deg);
+}
+
+Body {
+    font-family: Calibri, Helvetica, sans-serif;
+    background-color: white;
+    color: #8C8C8C;
+    margin: auto;
+}

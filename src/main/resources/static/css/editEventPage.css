@@ -1,0 +1,118 @@
+h1 {
+    text-align: center;
+    color: #45818F;
+    font-size: 44px;
+}
+#eventForm {
+    margin-top: 50px;
+    margin-left: 150px;
+}
+.box span.label {
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    vertical-align: top;
+    width: 300px;
+    font-size: 20px;
+}
+Body {
+    font-family: Calibri, Helvetica, sans-serif;
+    background-color: white;
+    margin: auto;
+}
+.container{
+    position: relative;
+    margin: auto;
+    width: 70%;
+}
+.picButton{
+    position: relative;
+    margin-top: 20px;
+    margin-left: 45%;
+    height: 48px;
+    background: #45818F;
+    border-radius: 13px;
+    border: none;
+    cursor: pointer;
+
+    font-family: Poly, sans-serif;
+    font-size: 19px;
+    color: #FFFFFF;
+}
+.formInput{
+    height: 30px;
+    font-size: 20px;
+}
+
+textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+textarea::-webkit-scrollbar-track {
+    opacity: 1;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background: rgba(191, 187, 187, 0.7);
+    border-radius: 40px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+    background: rgba(138, 138, 138, 0.7);
+}
+
+textarea {
+    resize: none;
+    /*margin: 14px 14px; */
+    border: solid #C6C6C6 2px;
+    background: none;
+    font-family: Poly, sans-serif;
+    font-size: 22px;
+
+    background: #ffffff;
+    color: black;
+}
+.square{
+    position: fixed;
+    width: 192.06px;
+    height: 191.6px;
+    left: -44px;
+    top: 380px;
+    z-index: -1;
+    background: rgba(148, 167, 172, 0.5);
+    transform: rotate(-28.33deg);
+}
+
+.circle1{
+    position: fixed;
+    width: 209px;
+    height: 217px;
+    left: 23px;
+    top: 525px;
+    z-index: -1;
+    border-radius: 50%;
+    background: rgba(249, 174, 101, 0.5);
+}
+
+.parallelog{
+    position: fixed;
+    width: 186px;
+    height: 190px;
+    left: 1290px;
+    top: 570px;
+    z-index: -1;
+    transform: skew(-20deg) rotate(-130deg);
+    background: rgba(69, 129, 143, 0.44);
+}
+
+.circle2{
+    position: fixed;
+    width: 210px;
+    height: 190px;
+    left: 1300px;
+    top: 430px;
+    z-index: -1;
+    border-radius: 50%;
+    background: rgba(214, 158, 101, 0.47);
+    transform: rotate(42deg);
+}
