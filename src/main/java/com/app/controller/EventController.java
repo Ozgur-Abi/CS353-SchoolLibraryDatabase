@@ -38,6 +38,7 @@ public class EventController {
         model.addAttribute("upcomingClubs", getClubs(upcomingEvents));
         model.addAttribute("pastEvents", pastEvents);
         model.addAttribute("upcomingEvents", upcomingEvents);
+
         return "events/list";
     }
 
@@ -52,6 +53,7 @@ public class EventController {
         event.setName(name);
         event.setDescription(description);
         event.setLocation(location);
+
         if(!startDate.equals(""))
             event.setStartDate( Long.parseLong(startDate.replace("-", "")) );
         if(!endDate.equals(""))

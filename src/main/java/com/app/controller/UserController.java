@@ -76,6 +76,7 @@ public class UserController {
         model.addAttribute("attendedevents", attendedEvents);
         model.addAttribute("clubs", clubs);
         User user = userService.findOneById(id);
+
         model.addAttribute("user", user);
         model.addAttribute("canEdit", false);
         model.addAttribute("dateOfBirth", DateService.dateString(user.getDateOfBirth()));

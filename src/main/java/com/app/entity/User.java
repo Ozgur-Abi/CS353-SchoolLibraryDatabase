@@ -25,8 +25,11 @@ public class User extends BaseEntity {
 
     private String email;
     private String password;
+    private String first_name;
+    private String last_name;
     private String username;
     private String description;
+    private int bilkent_id;
 
     private String department;
     @DateTimeFormat(style = "yyyy-MM-dd")

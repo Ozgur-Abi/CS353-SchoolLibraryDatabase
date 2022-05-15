@@ -91,6 +91,7 @@ public class LoginController {
             return "/register";
         }
 
+
         if (instagramUsername != "")
             user.setInstagramUsername(instagramUsername);
         if (linkedinUsername != "")
