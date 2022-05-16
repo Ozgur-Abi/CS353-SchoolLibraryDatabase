@@ -18,7 +18,7 @@ public class BookRating implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "user_id")
+    @Column(name = "rating_id")
     private long id;
 
     @DateTimeFormat(style = "yyyy-MM-dd")

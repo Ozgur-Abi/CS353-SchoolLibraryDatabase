@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link th:href="@{/css/request_book_style.css}" rel="stylesheet" />
+		<title>Request a Book</title>
+	</head>
+	<body>
+	<div class="container" th:replace="navbar/show :: navbar" ></div>
+		<heading>New Book Request</heading>
+		<form id="bookRequest" action="/books/book_request" method="post">
+        	    <div>
+					<label id="title">Title:</label>
+					<span class="ib"> <input type="text" class="formInput" name="title" id="titleInput" required/></span>
+				</div>
+				<div>
+					<label id="author">Author:</label>
+					<span class="ib"> <input type="text" class="formInput" name="author" id="authorInput" required/></span>
+				</div>
+					<label id="genre">Genre:</label>
+					<span class="ib"> <input type="text" class="formInput" name="genre" id="genreInput" required/></span>
+				<div>
+					<label id="pubDate">Publication Date:</label>
+					<span class="ib"> <input type="number" class="formInput" name="pubYear" id="pubDateInput" required/></span>
+				</div>
+					<label id="pub">Publisher:</label>
+					<span class="ib"> <input type="text" class="formInput" name="pub" id="pubInput" required/></span>
+				<div>	
+					<label id="lang">Language:</label>
+					<span class="ib"> <input type="text" class="formInput" name="lang" id="langInput" required/></span>
+				</div>	
+					<label id="isbn">ISBN:</label>
+					<span class="ib"> <input type="text" class="formInput" name="isbn" id="isbnInput" required/></span>
+				<div>	
+					<label id="issn">ISSN:</label>
+					<span class="ib"> <input type="text" class="formInput" name="issn" id="issnInput" required/></span>
+				</div>
+				<div>
+					<input class="picButton" type="submit" value="Request">
+				</div>
+        </form>
+	</body>
+</html>

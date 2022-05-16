@@ -19,7 +19,7 @@ public class ReservationRecord implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "user_id")
+    @Column(name = "reservation_id")
     private long id;
 
     @DateTimeFormat(style = "yyyy-MM-dd")

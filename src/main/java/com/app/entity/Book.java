@@ -18,7 +18,7 @@ public class Book implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "user_id")
+    @Column(name = "book_id")
     private long id;
 
     @Column(columnDefinition = "varchar(500)")

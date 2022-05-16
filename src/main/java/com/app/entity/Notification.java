@@ -18,7 +18,7 @@ public class Notification implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "user_id")
+    @Column(name = "notification_id")
     private long id;
 
     @DateTimeFormat(style = "yyyy-MM-dd")

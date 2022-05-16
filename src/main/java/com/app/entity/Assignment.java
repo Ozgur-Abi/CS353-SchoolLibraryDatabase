@@ -18,7 +18,7 @@ public class Assignment implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "user_id")
+    @Column(name = "assignment_id")
     private long id;
 
     @DateTimeFormat(style = "yyyy-MM-dd")

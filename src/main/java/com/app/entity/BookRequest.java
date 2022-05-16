@@ -19,7 +19,7 @@ public class BookRequest implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "user_id")
+    @Column(name = "request_id")
     private long id;
 
     @Column(columnDefinition = "varchar(500)")
