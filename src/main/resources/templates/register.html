@@ -115,22 +115,29 @@
         <div class="container">   
 			<center><h2>Create account</h2></center>
 			<div class="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+			<label>Bilkent ID</label>   
+            <input type="text" id="bilkentId" placeholder="bilkentId" name="bilkentId" required>
             <label>Email</label>   
             <input type="text" id="email" placeholder="email" name="email" required>
-			<label>Username</label>
-			<input type="text" id="username" placeholder="username" name="username" required>
+			<label>First Name</label>
+			<input type="text" id="firstName" placeholder="firstName" name="firstName" required>
+			<label>Last Name</label>
+			<input type="text" id="lastName" placeholder="lastName" name="lastName" required>
             <label>Password</label>   
             <input type="password" id="password" placeholder="password" name="password" required>
+			<select name="userRole" id="userRole">
+			<option value="0">Student</option>
+			<option value="1">Instructor</option>
+			<option value="2">Librarian</option>
 			<label>Department</label>
-			<input type="text" id="department" placeholder="department" name="department" required>
-			<label class="editText">Date Of Birth</label>
-			<input type="date" id="dateOfBirth" placeholder="dateOfBirth" name="dateOfBirth" >
-			<label class="editText">Start Of Studies</label>
-			<input type="number" id="startOfStudies" placeholder="Start of studies" name="startOfStudies" >
-			<label>Instagram Username</label>
-			<input class="editText" type="text" id="instagramUsername" placeholder="instagram Username" name="instagramUsername" >
-			<label>LinkedIn Username</label>
-			<input type="text" id="linkedinUsername" placeholder="linkedin Username" name="linkedinUsername" >
+			<input type="text" id="department" placeholder="department" name="department">
+			<label>Year</label>
+			<input type="text" id="year" placeholder="year" name="year">
+			<label>Sections</label>
+			<input type="text" id="sections" placeholder="sections" name="sections">
+			<label>Years of Experience</label>
+			<input type="text" id="yearsOfExperience" placeholder="yearsOfExperience" name="yearsOfExperience">
+			
             <button type="submit">Register</button>    
         </div> 
 	</form>

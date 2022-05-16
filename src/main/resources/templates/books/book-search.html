@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Search a Book</title>
+  <link th:href="@{/css/eventsList.css}" rel="stylesheet" />
+</head>
+<body>
+  <div th:replace="navbar/show :: navbar" ></div>
+
+<!--
+  <div id="pastEvents">
+    <tr th:each="event: ${pastEvents}">
+      <a th:href="@{/events/{id}(id=${event.id})}" th:text="${event.name}">bruh</a>
+    </tr>
+  </div>
+  <div id="upcomingEvents">
+    <tr th:each="event: ${upcomingEvents}">
+      <a th:href="@{/events/{id}(id=${event.id})}" th:text="${event.name}">bruh</a>
+    </tr>
+  </div> -->
+<form method="post" action="/books/book-search">
+	<div class="container">
+		<label for="bookName">Book Name</label>
+		<input type="text" id="bookName" name="bookName" placeholder="Enter Book Name" required>
+		<button type="submit">Search</button>
+	</div>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th> Title </th>
+            <th> Author </th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr th:if="${books.empty}">
+            <td colspan="2"> No Books Available </td>
+        </tr>
+        <tr th:each="book : ${books}">
+            <td><span th:text="${book.title}"> Title </span></td>
+            <td><span th:text="${book.author}"> Author </span></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+
+</html>
+

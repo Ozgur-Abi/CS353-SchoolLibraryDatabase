@@ -1,5 +1,6 @@
 package com.app.entity;
 
+import com.app.helpers.Role;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,28 +11,22 @@ import java.util.UUID;
 public class MyUserDetails implements UserDetails {
     private String email;
     private String password;
-    private String username;
-    private String description;
-    private UUID uuid;
+    private String bilkentId;
+    private String firstName;
+    private String lastName;
 
-    private String department;
-    private int startOfStudies;
-    private Long dateOfBirth;
-    private String instagramUsername;
-    private String linkedinUsername;
+    private Role role;
+    private long id;
+
 
     public MyUserDetails(User user) {
-        this.uuid = user.getId();
+        this.id = user.getId();
         this.email = user.getEmail();
         this.password = user.getPassword();
-        this.username = user.getUsername();
-        this.description = user.getDescription();
-
-        this.department = user.getDepartment();
-        this.dateOfBirth = user.getDateOfBirth();
-        this.startOfStudies = user.getStartOfStudies();
-        this.instagramUsername = user.getInstagramUsername();
-        this.linkedinUsername = user.getLinkedinUsername();
+        this.bilkentId = user.getBilkentId();
+        this.firstName = user.getFirst_name();
+        this.lastName = user.getLast_name();
+        this.role = user.getRole();
     }
 
     public MyUserDetails(){}
@@ -47,40 +42,32 @@ public class MyUserDetails implements UserDetails {
         return password;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     @Override
     public String getUsername() {
-        return username;
+        return bilkentId;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public Long getDateOfBirth() {
-        return dateOfBirth;
+    public String getBilkentId() {
+        return bilkentId;
     }
 
-    public int getStartOfStudies() {
-        return startOfStudies;
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
     }
 
-    public String getDepartment() {
-        return department;
+    public Role getRole() {
+        return role;
     }
 
-    public String getInstagramUsername() {
-        return instagramUsername;
-    }
 
-    public String getLinkedinUsername() {
-        return linkedinUsername;
-    }
-
-    public UUID getUUID(){return uuid;}
+    public long getId(){return id;}
 
     @Override
     public boolean isAccountNonExpired() {

@@ -23,10 +23,10 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<User> user = userRepository.findUserByEmail(email);
+    public UserDetails loadUserByUsername(String bilkentID) throws UsernameNotFoundException {
+        Optional<User> user = userRepository.findUserByBilkentId(bilkentID);
 
-        user.orElseThrow(()->new UsernameNotFoundException("user with email " + email + " not found"));
+        user.orElseThrow(()->new UsernameNotFoundException("user with email " + bilkentID + " not found"));
 
         return user.map(MyUserDetails::new).get();
     }
@@ -39,24 +39,17 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-    public void delete(UUID id) {
-        userRepository.deleteById(id);
-    }
 
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
-    public User findOneById(UUID id) {
+    public User findOneById(long id) {
         return userRepository.findUserById(id);
     }
 
-    public User findUserByEmail(String email) {
-        return userRepository.findUserByEmail(email).orElseThrow();
-    }
-
-    public List<User> findUsersByUsernameContaining(String username) {
-        return userRepository.findUsersByUsernameContaining(username);
+    public User findUserByBilkentId(String bilkentId) {
+        return userRepository.findUserByBilkentId(bilkentId).orElseThrow();
     }
 
     public Long count() {

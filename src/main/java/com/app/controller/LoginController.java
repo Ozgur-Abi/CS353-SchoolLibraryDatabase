@@ -1,33 +1,36 @@
 package com.app.controller;
 
+import com.app.entity.Instructor;
+import com.app.entity.Librarian;
+import com.app.entity.Student;
 import com.app.entity.User;
-import com.app.service.AttendanceService;
-import com.app.service.EventService;
+import com.app.helpers.Role;
 import com.app.service.UserService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.security.sasl.AuthenticationException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.sql.Date;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor(onConstructor = @__({@Autowired,@NonNull}))
 public class LoginController {
     private final UserService userService;
-    private final EventService eventService;
-    private final AttendanceService attendanceService;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @RequestMapping("/login")
     public String index() {
-        System.out.println((new Date(System.currentTimeMillis()).toString()).replace("-", ""));
+        //System.out.println((new Date(System.currentTimeMillis()).toString()).replace("-", ""));
         return "/login";
     }
 
@@ -52,16 +55,24 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping("/register")
-    public String registerUser(@RequestParam String username, @RequestParam String email, @RequestParam String password, @RequestParam String department,
-                               @RequestParam String dateOfBirth, @RequestParam int startOfStudies, @RequestParam String instagramUsername,
-                               @RequestParam String linkedinUsername, Model model) throws Exception {
+    @Transactional
+    @PostMapping("register")
+    public String registerUser(@RequestParam String bilkentId, @RequestParam String email, @RequestParam String password,
+                               @RequestParam String firstName, @RequestParam String lastName, @RequestParam int userRole,
+                               @RequestParam String year, @RequestParam String department,
+                               @RequestParam String sections, @RequestParam String yearsOfExperience,
+                               Model model) throws Exception {
         List<User> users = userService.findAll();
-        for (User user: users)
+        for (User user: users) {
             if (email.equals(user.getEmail())) {
                 model.addAttribute("errorMessage", "User with this email already exists");
                 return "/register";
             }
+            if (bilkentId.equals(user.getBilkentId())) {
+                model.addAttribute("errorMessage", "User with this Bilkent ID already exists");
+                return "/register";
+            }
+        }
 
         if (!email.contains("bilkent.edu.tr")) {
             String errorMessage = "Email has to include 'bilkent.edu.tr'";
@@ -72,31 +83,45 @@ public class LoginController {
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
-        user.setDescription("");
-        user.setUsername(username);
-        user.setDepartment(department);
-        if (Long.parseLong(dateOfBirth.replace("-", "")) < (Long.parseLong((new java.sql.Date(System.currentTimeMillis()).toString()).replace("-", "")) - 16)) {
-            user.setDateOfBirth(Long.parseLong(dateOfBirth.replace("-", "")));
-        }
-        else {
-            model.addAttribute("errorMessage", "Date of Birth should be at least 16 years less than today's date");
-            return "/register";
-        }
-
-        if (startOfStudies * 10000 <= Long.parseLong((new java.sql.Date(System.currentTimeMillis()).toString()).replace("-", "")) ) {
-            user.setStartOfStudies(startOfStudies);
-        }
-        else {
-            model.addAttribute("errorMessage", "Start of Studies should be less than today's date");
-            return "/register";
-        }
+        user.setBilkentId(bilkentId);
+        user.setFirst_name(firstName);
+        user.setLast_name(lastName);
 
 
-        if (instagramUsername != "")
-            user.setInstagramUsername(instagramUsername);
-        if (linkedinUsername != "")
-            user.setLinkedinUsername(linkedinUsername);
-        userService.save(user);
+
+        if (userRole == 0) {
+            user.setRole(Role.STUDENT);
+            System.out.println(user.getId());
+            userService.save(user);
+            entityManager.createNativeQuery("INSERT INTO student (department, fines, year, user_id) VALUES (?,?,?,?)")
+                    .setParameter(1, department)
+                    .setParameter(2, 0)
+                    .setParameter(3, Integer.valueOf(year))
+                    .setParameter(4, user.getId())
+                    .executeUpdate();
+        }
+        if (userRole == 1) {
+            user.setRole(Role.INSTRUCTOR);
+            userService.save(user);
+            entityManager.createNativeQuery("INSERT INTO instructor (department, fines, sections, user_id) VALUES (?,?,?,?)")
+                    .setParameter(1, department)
+                    .setParameter(2, 0)
+                    .setParameter(3, sections)
+                    .setParameter(4, user.getId())
+                    .executeUpdate();
+        }
+        if (userRole == 2) {
+            user.setRole(Role.LIBRARIAN);
+            userService.save(user);
+            entityManager.createNativeQuery("INSERT INTO librarian years_of_experience, user_id) VALUES (?,?)")
+                    .setParameter(1, Integer.valueOf(yearsOfExperience))
+                    .setParameter(2, user.getId())
+                    .executeUpdate();
+
+        }
+
+
+
         return "login";
     }
 

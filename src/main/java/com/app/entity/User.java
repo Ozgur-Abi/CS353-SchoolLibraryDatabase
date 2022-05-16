@@ -1,5 +1,6 @@
 package com.app.entity;
 
+import com.app.helpers.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,24 +10,39 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class User extends BaseEntity {
 
+public class User implements Serializable {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "user_id")
+    private long id;
+
+    @Column(columnDefinition = "varchar(8)")
+    private String bilkentId;
+    @Column(columnDefinition = "varchar(100)")
     private String email;
+    @Column(columnDefinition = "varchar(100)")
     private String password;
+    @Column(columnDefinition = "varchar(20)")
     private String first_name;
+    @Column(columnDefinition = "varchar(20)")
     private String last_name;
+
+    private Role role;
+
+
+/*
     private String username;
     private String description;
     private int bilkent_id;
@@ -36,6 +52,6 @@ public class User extends BaseEntity {
     private Long dateOfBirth;
     private int startOfStudies;
     private String instagramUsername;
-    private String linkedinUsername;
+    private String linkedinUsername;*/
 
 }
