@@ -18,8 +18,14 @@
       <a th:href="@{/events/{id}(id=${event.id})}" th:text="${event.name}">bruh</a>
     </tr>
   </div> -->
+
+
 <form method="post" action="/books/book-search">
 	<div class="container">
+        <select name="userSelection" id="userSelection">
+            <option value="0">Title</option>
+            <option value="1">Keyword</option>
+            <option value="2">Author</option>
 		<label for="bookName">Book Name</label>
 		<input type="text" id="title" name="title" placeholder="Enter Book Title" required>
 		<button type="submit">Search</button>
@@ -46,4 +52,3 @@
 </body>
 
 </html>
-

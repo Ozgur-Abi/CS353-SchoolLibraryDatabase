@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link th:href="@{/css/request_book_style.css}" rel="stylesheet" />
-		<title>Request a Book</title>
+		<link th:href="@{/css/add_book_style.css}" rel="stylesheet" />
+		<title>Add a Book</title>
 	</head>
 	<body>
 	<div class="container" th:replace="navbar/show :: navbar" ></div>
-		<heading>New Book Request</heading>
-		<form id="bookRequest" action="/books/book_request" method="post">
+		<heading>Add a Book to the System</heading>
+		<form id="bookRequest" action="/books/book_add" method="post">
         	    <div>
 					<label id="title">Title:</label>
 					<span class="ib"> <input type="text" class="formInput" name="title" id="titleInput" required/></span>
@@ -35,7 +35,7 @@
 					<span class="ib"> <input type="text" class="formInput" name="issn" id="issnInput" required/></span>
 				</div>
 				<div>
-					<input class="picButton" type="submit" value="Request">
+					<input class="picButton" type="submit" value="Add">
 				</div>
         </form>
 	</body>

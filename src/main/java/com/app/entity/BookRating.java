@@ -24,11 +24,10 @@ public class BookRating implements Serializable {
     @DateTimeFormat(style = "yyyy-MM-dd")
     private Long rating_date;
 
-    @Id
-    @Column(name = "book_id")
-    private long book_id;
+    @ManyToOne
+    @JoinColumn(name="book_id", referencedColumnName="book_id")
+    private Book book;
 
-    @Id
     @Column(name = "rater_id")
     private long rater_id;
 

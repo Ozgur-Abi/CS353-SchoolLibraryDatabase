@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link th:href="@{/css/reservation_requests.css}" rel="stylesheet" />
+	<title>View  Reservation Requests</title>
+</head>
+	<body>
+		<span class="requestPanel">
+			<table>
+				<tbody>
+					<tr th:if="${requests.empty}">
+						<td colspan="2">No Reservation Requests</td>
+					</tr>
+					<tr th:each="request : ${requests}">
+						<td>
+							<info>
+								<span>Request for <span>
+								<span th:text="${request.book.title}"></span>
+								<span> by </span>
+								<span th:text="${request.book.author}"></span>
+								<span> from </span>
+								<span th:text="${request.requester.first_name}"></span>
+							</info>
+							<form>
+								<input class="picButton" id="rejectButton" type="submit" value="Reject" formnovalidate>
+								<span class="ib"> <input type="date" class="formInput" name="dueDate" id="dueDateInput" required/></span>
+								<input class="picButton" id="approveButton" type="submit" value="Approve">
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>		
+		</span>
+	</body>
+</html>

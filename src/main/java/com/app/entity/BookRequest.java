@@ -41,11 +41,9 @@ public class BookRequest implements Serializable {
 
     @DateTimeFormat(style = "yyyy-MM-dd")
     private Long request_date;
-    @Id
-    @Column(name = "book_id")
-    private long book_id;
-    @Id
-    @Column(name = "requester_id")
-    private long requester_id;
+
+    @ManyToOne
+    @JoinColumn(name="requester_id", referencedColumnName="user_id")
+    private User user;
     
 }

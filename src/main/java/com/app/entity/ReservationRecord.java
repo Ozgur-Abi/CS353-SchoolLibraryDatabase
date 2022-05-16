@@ -24,14 +24,17 @@ public class ReservationRecord implements Serializable {
 
     @DateTimeFormat(style = "yyyy-MM-dd")
     private Long request_date;
-    @Id
-    @Column(name = "book_id")
-    private long book_id;
-    @Id
-    @Column(name = "requester_id")
-    private long requester_id;
-    @Id
-    @Column(name = "approver_id")
-    private long approver_id;
+
+    @ManyToOne
+    @JoinColumn(name="book_id", referencedColumnName="book_id")
+    private Book book;
+
+    @ManyToOne
+    @JoinColumn(name="requester_id", referencedColumnName="user_id")
+    private User requester;
+
+    @ManyToOne
+    @JoinColumn(name="approver_id", referencedColumnName="user_id")
+    private User approver;
     
 }

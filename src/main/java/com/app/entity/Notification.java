@@ -24,13 +24,13 @@ public class Notification implements Serializable {
     @DateTimeFormat(style = "yyyy-MM-dd")
     private Long notification_date;
 
-    @Id
-    @Column(name = "sender_id")
-    private long sender_id;
+    @ManyToOne
+    @JoinColumn(name="sender_id", referencedColumnName="user_id")
+    private User sender;
 
-    @Id
-    @Column(name = "receiver_id")
-    private long receiver_id;
+    @ManyToOne
+    @JoinColumn(name="receiver_id", referencedColumnName="user_id")
+    private User receiver;
 
     @Column(columnDefinition = "varchar(5000)")
     private String text;

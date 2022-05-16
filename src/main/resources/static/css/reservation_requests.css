@@ -1,0 +1,69 @@
+body {
+    background: #2B2D32;
+    font-family: 'Poppins';
+}
+
+.requestPanel{	
+	box-sizing: border-box;
+
+	position: absolute;
+	width: 50%;
+	height: 545px;
+	left: 84px;
+	top: 175px;
+	font-size: 25px;
+
+	background: #FFFFFF;
+	border: 2px solid #3B3E45
+}
+
+#rejectButton:hover {background: black}
+#approveButton:hover {background: black}
+
+.picButton:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#rejectButton{
+	position: absolute;
+	width: 108px;
+	height: 30px;
+	right: 240px;
+
+	background: #5A1A1A;
+	border-radius: 8px;
+	
+	color: white;
+	font-size: 19px;
+}
+
+
+
+#approveButton{
+	position: absolute;
+	width: 108px;
+	height: 30px;
+	right: 1px;
+
+	background: #1A5A30;
+	border-radius: 8px;
+	
+	color: white;
+	font-size: 19px;
+}
+
+#dueDateInput{
+	position: absolute;
+	width: 108px;
+	height: 30px;
+	right: 120px;
+}
+
+info {
+	background: #ebe2e1;
+}
+
+td {
+	 border-bottom: 5px solid red;
+}

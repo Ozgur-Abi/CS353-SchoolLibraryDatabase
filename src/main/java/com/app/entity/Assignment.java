@@ -24,17 +24,17 @@ public class Assignment implements Serializable {
     @DateTimeFormat(style = "yyyy-MM-dd")
     private Long due_date;
 
-    @Id
-    @Column(name = "instructor_id")
-    private long sender_id;
+    @ManyToOne
+    @JoinColumn(name="instructor_id", referencedColumnName="user_id")
+    private User sender;
 
-    @Id
-    @Column(name = "student_id")
-    private long receiver_id;
+    @ManyToOne
+    @JoinColumn(name="student_id", referencedColumnName="user_id")
+    private User receiver;
 
-    @Id
-    @Column(name = "assignmed_book_id")
-    private long assigned_book_id;
+    @ManyToOne
+    @JoinColumn(name="assigned_book_id", referencedColumnName="book_id")
+    private Book assigned_book;
 
     @Column(columnDefinition = "varchar(5000)")
     private String weight;
