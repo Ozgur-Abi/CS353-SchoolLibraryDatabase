@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link th:href="@{/css/add_book_style.css}" rel="stylesheet" />
+		<title>Send Notification</title>
+	</head>
+	<body>
+	<div class="container" th:replace="navbar/show :: navbar" ></div>
+		<heading>Send Notification to a User</heading>
+		<form id="bookRequest" action="/books/send_notification" method="post">
+        	    <div>
+					<label id="title">Bilkent ID:</label>
+					<span class="ib"> <input type="text" class="formInput" name="receiverId" id="titleInput" required/></span>
+				</div>
+				<div>
+					<label id="author">Message:</label>
+					<span class="ib"> <input type="text" class="formInput" name="message" id="authorInput" required/></span>
+				<div>
+					<input class="picButton" type="submit" value="Send">
+				</div>
+        </form>
+	</body>
+</html>

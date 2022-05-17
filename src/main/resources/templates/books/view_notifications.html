@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link th:href="@{/css/view_notifications.css}" rel="stylesheet" />
+	<title>View Notifications</title>
+</head>
+	<body>
+	<div th:replace="navbar/show :: navbar" ></div>
+		<span class="requestPanel">
+			<table>
+				<tbody>
+					<tr th:if="${notifications.empty}">
+						<td colspan="2">No Notifications</td>
+					</tr>
+					<tr th:each="notification : ${notifications}">
+						<td>
+							<info>
+								<span> Notification message from </span>
+								<span th:text="${notification.sender.first_name} + ' ' + ${notification.sender.last_name} + ':'"></span>
+								<span th:text="${notification.text}"></span>
+							</info>
+							<form th:action="@{/books/notifications/{id}/delete(id=${notification.id})}" method="post">
+								<input id="deleteNotificationButton" type="submit" value="Delete Notification">
+							</form>
+							<br>
+							<br>
+						</td>
+					</tr>
+				</tbody>
+			</table>		
+		</span>
+	</body>
+</html>

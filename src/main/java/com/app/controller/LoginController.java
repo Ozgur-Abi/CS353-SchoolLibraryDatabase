@@ -113,7 +113,7 @@ public class LoginController {
         if (userRole == 2) {
             user.setRole(Role.LIBRARIAN);
             userService.save(user);
-            entityManager.createNativeQuery("INSERT INTO librarian years_of_experience, user_id) VALUES (?,?)")
+            entityManager.createNativeQuery("INSERT INTO librarian (years_of_experience, user_id) VALUES (?,?)")
                     .setParameter(1, Integer.valueOf(yearsOfExperience))
                     .setParameter(2, user.getId())
                     .executeUpdate();

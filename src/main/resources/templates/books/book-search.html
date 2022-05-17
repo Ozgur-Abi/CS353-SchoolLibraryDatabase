@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Search a Book</title>
-  <link th:href="@{/css/eventsList.css}" rel="stylesheet" />
+  <link th:href="@{/css/reservation_requests.css}" rel="stylesheet" />
 </head>
 <body>
   <div th:replace="navbar/show :: navbar" ></div>
@@ -21,30 +21,35 @@
 
 
 <form method="post" action="/books/book-search">
-	<div class="container">
+	<div id="search-bar" class="container">
         <select name="userSelection" id="userSelection">
             <option value="0">Title</option>
             <option value="1">Keyword</option>
             <option value="2">Author</option>
+			<option value="3">Between Years</option>
 		<label for="bookName">Book Name</label>
-		<input type="text" id="title" name="title" placeholder="Enter Book Title" required>
+		<input type="text" id="title" name="title" required>
 		<button type="submit">Search</button>
+		<a href="/books/add_book">Request a Book</a>
 	</div>
 </form>
-<table>
+
+<table id="search-results">
     <thead>
         <tr>
             <th> Title </th>
             <th> Author </th>
+			<th> Published Year </th>
         </tr>
     </thead>
     <tbody>
 	<tr th:if="${books.empty}">
-            <td colspan="2"> No Books Available </td>
+            <td colspan="2"> No Books Found </td>
         </tr>
         <tr th:each="book : ${books}">
-            <td><span th:text="${book.title}"> Title </span></td>
+            <td><a th:href="@{/books/book/{id}(id=${book.id})}"><span th:text="${book.title}"> Title </span></a></td>
             <td><span th:text="${book.author}"> Author </span></td>
+			<td><span th:text="${book.published_year}"> Published Year </span></td>
         </tr>
     </tbody>
 </table>

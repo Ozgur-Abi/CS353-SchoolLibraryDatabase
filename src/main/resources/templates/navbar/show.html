@@ -1,74 +1,82 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<style>
-    Body {
-        font-family: Calibri, Helvetica, sans-serif;
-        background-color: white;
-        margin: auto;
-    }
-</style>
-    <div th:if="${role}==0" th:fragment="navbar">
-        <link th:href="@{/css/navbar.css}" rel="stylesheet" />
-
-        <section class="navigation">
-            <div><img class="logo" src="https://i.ibb.co/pJRhkQR/sigma-logo.png"></div>
-            <div class="nav-container">
-                <div class="brand">
-                </div>
-                <nav>
-                    <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-                    <ul class="nav-list">
-
-                        <li>
-                            <a href="/clubs">Clubs</a>
-                        </li>
-                        <li>
-                            <a href="/events">Events</a>
-                        </li>
-                        <li>
-                            <a href="/users">Users</a>
-                        </li>
-                        <li>
-                            <a href="/users/user-profile">Profile</a>
-                        </li>
-                        <li>
-                            <a id="signout" href="/logout">Sign Out</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-    </div>
-	<div th:if="${role}>=1" th:fragment="navbar">
-        <link th:href="@{/css/navbar.css}" rel="stylesheet" />
-
-        <section class="navigation">
-            <div><img class="logo" src="https://i.ibb.co/pJRhkQR/sigma-logo.png"></div>
-            <div class="nav-container">
-                <div class="brand">
-                </div>
-                <nav>
-                    <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-                    <ul class="nav-list">
-
-                        <li>
-                            <a href="/clubs">asd</a>
-                        </li>
-                        <li>
-                            <a href="/events">Events</a>
-                        </li>
-                        <li>
-                            <a href="/users">Users</a>
-                        </li>
-                        <li>
-                            <a href="/users/user-profile">Profile</a>
-                        </li>
-                        <li>
-                            <a id="signout" href="/logout">Sign Out</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-    </div>
+	<div th:if="${role}==0" class="bar" th:fragment="navbar">
+		<link th:href="@{/css/student_navbar.css}" rel="stylesheet" />
+		<a href="#!" class="container" id="brand">
+			<div id="logo" class="circle">
+				<div class="circle" id="logo-left">
+					<div class="myDiv">
+						<img th:src="@{/img/logo.png}" alt="Logo" height="50" width="50">
+					</div>					
+				</div>
+				<div id="logo-right" class="myDiv">
+				School <br> Library <br> Database
+				</div>
+			</div>
+		</a>
+		<a href="/books/book-search" class="container" id="book-search"><img th:src="@{/img/magnifier.png}" alt="Search" height="30" width="30">Search Books
+		</a>
+		<a href="/books/view_assignments" class="container" id="profile"><img th:src="@{/img/user.png}" alt="Profile" height="30" width="30">My Assignments
+		</a>
+		<a href="/books/view_notifications" class="container" id="notifications"><img th:src="@{/img/notification.png}" alt="Notifications" height="30" width="30">Notifications
+		</a>
+		<a href="/logout" class="container" id="log-out"><img th:src="@{/img/exit.png}" alt="Log out" height="30" width="30">Log Out
+		</a>
+	</div>
+	
+	<div th:if="${role}==1" class="bar" th:fragment="navbar">
+		<link th:href="@{/css/instructor_navbar.css}" rel="stylesheet" />
+		<a href="#!" class="container" id="brand">
+			<div id="logo" class="circle">
+				<div class="circle" id="logo-left">
+					<div class="myDiv">
+						<img th:src="@{/img/logo.png}" alt="Logo" height="50" width="50">
+					</div>					
+				</div>
+				<div id="logo-right" class="myDiv">
+				School <br> Library <br> Database
+				</div>
+			</div>
+		</a>
+		<a href="/books/assign_book" class="container" id="assign-book"><img th:src="@{/img/assignment.png}" alt="Assign Book" height="30" width="30">Assign Book
+		</a>
+		<a href="/books/book-search" class="container" id="book-search"><img th:src="@{/img/magnifier.png}" alt="Search" height="30" width="30">Search Books
+		</a>
+		<a href="/books/view_assignments" class="container" id="profile"><img th:src="@{/img/user.png}" alt="Profile" height="30" width="30">My Assignments
+		</a>
+		<a href="/books/view_notifications" class="container" id="notifications"><img th:src="@{/img/notification.png}" alt="Notifications" height="30" width="30">Notifications
+		</a>
+		<a href="/logout" class="container" id="log-out"><img th:src="@{/img/exit.png}" alt="Log out" height="30" width="30">Log Out
+		</a>
+	</div>
+	
+	<div th:if="${role}==2" class="bar" th:fragment="navbar">
+		<link th:href="@{/css/librarian_navbar.css}" rel="stylesheet" />
+		<a href="#!" class="container" id="brand">
+			<div id="logo" class="circle">
+				<div class="circle" id="logo-left">
+					<div class="myDiv">
+						<img th:src="@{/img/logo.png}" alt="Logo" height="50" width="50">
+					</div>					
+				</div>
+				<div id="logo-right" class="myDiv">
+				School <br> Library <br> Database
+				</div>
+			</div>
+		</a>
+		<a href="/books/book_requests" class="container" id="book-requests"><img th:src="@{/img/addition.png}" alt="Book Requests" height="30" width="30">Book Requests
+		</a>
+		<a href="/books/reservation_requests" class="container" id="reservation-requests"><img th:src="@{/img/reserve.png}" alt="Reservation Requests" height="30" width="30">Reservation Requests
+		</a>
+		<a href="/books/borrow_requests" class="container" id="borrow-requests"><img th:src="@{/img/borrowing.png}" alt="Borrow Requests" height="30" width="30">Borrow Requests
+		</a>
+		<a href="/books/book-search" class="container" id="book-search"><img th:src="@{/img/magnifier.png}" alt="Search" height="30" width="30">Search Books
+		</a>
+		<a href="/books/send_notification" class="container" id="send-notifications"><img th:src="@{/img/notification.png}" alt="Notifications" height="30" width="30">Send Notifications
+		</a>
+		<a href="/logout" class="container" id="log-out"><img th:src="@{/img/exit.png}" alt="Log out" height="30" width="30">Log Out
+		</a>
+	</div>
+    
+	
 </html>

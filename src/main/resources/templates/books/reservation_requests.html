@@ -3,9 +3,10 @@
 
 <head>
 	<link th:href="@{/css/reservation_requests.css}" rel="stylesheet" />
-	<title>View  Reservation Requests</title>
+	<title>View Reservation Requests</title>
 </head>
 	<body>
+	<div th:replace="navbar/show :: navbar" ></div>
 		<span class="requestPanel">
 			<table>
 				<tbody>
@@ -22,11 +23,14 @@
 								<span> from </span>
 								<span th:text="${request.requester.first_name}"></span>
 							</info>
-							<form>
-								<input class="picButton" id="rejectButton" type="submit" value="Reject" formnovalidate>
-								<span class="ib"> <input type="date" class="formInput" name="dueDate" id="dueDateInput" required/></span>
-								<input class="picButton" id="approveButton" type="submit" value="Approve">
+							<form th:action="@{/books/reservation_requests/{id}/approve(id=${request.id})}" method="post">
+								<input id="approveButton" type="submit" value="Approve">
 							</form>
+							<form th:action="@{/books/borrow_requests/{id}/reject(id=${request.id})}" method="post">
+								<input id="rejectButton" type="submit" value="Reject" formnovalidate>
+							</form>
+							<br>
+							<br>
 						</td>
 					</tr>
 				</tbody>
