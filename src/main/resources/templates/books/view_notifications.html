@@ -20,9 +20,6 @@
 								<span th:text="${notification.sender.first_name} + ' ' + ${notification.sender.last_name} + ':'"></span>
 								<span th:text="${notification.text}"></span>
 							</info>
-							<form th:action="@{/books/notifications/{id}/delete(id=${notification.id})}" method="post">
-								<input id="deleteNotificationButton" type="submit" value="Delete Notification">
-							</form>
 							<br>
 							<br>
 						</td>

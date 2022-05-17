@@ -3,12 +3,13 @@
 
 <head>
 	<link th:href="@{/css/reservation_requests.css}" rel="stylesheet" />
-	<title>View Reservation Requests</title>
+	<title>View Book</title>
 </head>
 	<body>
 	<div th:replace="navbar/show :: navbar" ></div>
 		<span class="bookInfoPanel">
 			<ul class="info">
+			<li th:text="'Book ID: ' + ${book.id}"></li>
 			<li th:text="'Title: ' + ${book.title}"></li>
 			<li th:text="'Author: ' + ${book.author}"></li>
 			<li th:text="'Genre: ' + ${book.genre}"></li>

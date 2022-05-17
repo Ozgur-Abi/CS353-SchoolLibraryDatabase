@@ -40,7 +40,7 @@ public class BookController {
         return "books/book-search";
     }
 
-    @RequestMapping(value = "/book_request", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    @RequestMapping(value = "/request_book", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
     public String getRequestBookForm(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("role", ((MyUserDetails)authentication.getPrincipal()).getRole().ordinal());
@@ -166,6 +166,14 @@ public class BookController {
         String ratingMin = "SELECT MIN(score) FROM book_rating";
         Query q7 = entityManager.createNativeQuery(ratingMin);
 
+        String alreadybQuery = "SELECT * FROM borrow_record WHERE book_id = " + id + " AND requester_id = " + rid + " AND approver_id IS NULL AND return_date IS NULL";
+        Query q8 = entityManager.createNativeQuery(alreadybQuery, BorrowRecord.class);
+        List<BorrowRecord> ablist=(List<BorrowRecord>)q8.getResultList();
+
+        String alreadyrQuery = "SELECT * FROM reservation_record WHERE book_id = " + id + " AND requester_id = " + rid + " AND approver_id IS NULL";
+        Query q9 = entityManager.createNativeQuery(alreadyrQuery, ReservationRecord.class);
+        List<ReservationRecord> arlist=(List<ReservationRecord>)q9.getResultList();
+
         model.addAttribute("maxScore", q6.getResultList().get(0));
         model.addAttribute("minScore", q7.getResultList().get(0));
 
@@ -176,21 +184,30 @@ public class BookController {
 
         model.addAttribute("ratings", rateList);
 
-        if (rlist.isEmpty())
-            model.addAttribute("availability", "Borrowable");
+        if (!ablist.isEmpty()){
+            model.addAttribute("availability", "Sent Borrow Request");
+        }
+        else if (!arlist.isEmpty()){
+            model.addAttribute("availability", "Sent Reservation Request");
+        }
         else{
-            if (rlist.get(0).getBorrower().getId() == rid){ //this user has borrowed the book
-                model.addAttribute("availability", "Borrowed");
-            }
-            else if (reslist.isEmpty())
-                model.addAttribute("availability", "Reserveable");
-            else if (reslist.get(0).getRequester().getId() == rid){ //this user has borrowed the book
-                model.addAttribute("availability", "Reserved");
-            }
+            if (rlist.isEmpty())
+                model.addAttribute("availability", "Borrowable");
             else{
-                model.addAttribute("availability", "Unavailable");
+                if (rlist.get(0).getBorrower().getId() == rid){ //this user has borrowed the book
+                    model.addAttribute("availability", "Borrowed");
+                }
+                else if (reslist.isEmpty())
+                    model.addAttribute("availability", "Reserveable");
+                else if (reslist.get(0).getRequester().getId() == rid){ //this user has borrowed the book
+                    model.addAttribute("availability", "Reserved");
+                }
+                else{
+                    model.addAttribute("availability", "Unavailable");
+                }
             }
         }
+
         return "books/book";
     }
 
@@ -382,6 +399,46 @@ public class BookController {
                 .setParameter(2, message)
                 .setParameter(3, recId)
                 .setParameter(4, rid)
+                .executeUpdate();
+        return "redirect:/books/book-search";
+    }
+    @RequestMapping(value = "/view_assignments", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    public String getAssignments(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("role", ((MyUserDetails)authentication.getPrincipal()).getRole().ordinal());
+        long rid =  ((MyUserDetails)authentication.getPrincipal()).getId();
+        Query q = entityManager.createNativeQuery("SELECT * FROM assignment WHERE student_id = " + rid, Assignment.class);
+        List<Assignment> nlist=(List<Assignment>)q.getResultList( );
+        model.addAttribute("assignments", nlist);
+        return "books/view_assignments";
+    }
+
+    @RequestMapping(value = "/give_assignment", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    public String getGiveAssignment(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("role", ((MyUserDetails)authentication.getPrincipal()).getRole().ordinal());
+        long rid =  ((MyUserDetails)authentication.getPrincipal()).getId();
+        return "books/give_assignment";
+    }
+    @Transactional
+    @RequestMapping(value = "/give_assignment", method = RequestMethod.POST, produces = MediaType.TEXT_HTML_VALUE)
+    public String giveAssignment(Model model, @RequestParam String receiverId, @RequestParam String dueDate, @RequestParam String message, @RequestParam String bookId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        long rid =  ((MyUserDetails)authentication.getPrincipal()).getId();
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDateTime now = LocalDateTime.now();
+
+
+        long recId = userService.findUserByBilkentId(receiverId).getId();
+
+        entityManager.createNativeQuery("INSERT INTO assignment (due_date, weight, assigned_book_id, student_id, instructor_id) VALUES (?,?,?,?,?)")
+                .setParameter(1, Long.parseLong(dueDate.replace("-", "")))
+                .setParameter(2, message)
+                .setParameter(3, bookId)
+                .setParameter(4, recId)
+                .setParameter(5, rid)
                 .executeUpdate();
         return "redirect:/books/book-search";
     }

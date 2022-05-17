@@ -30,7 +30,8 @@
 		<label for="bookName">Book Name</label>
 		<input type="text" id="title" name="title" required>
 		<button type="submit">Search</button>
-		<a href="/books/add_book">Request a Book</a>
+		<a href="/books/request_book">Request a Book</a>
+		<a th:if="${role}==2" href="/books/add_book">Add a Book</a>
 	</div>
 </form>
 
@@ -40,6 +41,7 @@
             <th> Title </th>
             <th> Author </th>
 			<th> Published Year </th>
+			<th> Book ID </th>
         </tr>
     </thead>
     <tbody>
@@ -50,6 +52,7 @@
             <td><a th:href="@{/books/book/{id}(id=${book.id})}"><span th:text="${book.title}"> Title </span></a></td>
             <td><span th:text="${book.author}"> Author </span></td>
 			<td><span th:text="${book.published_year}"> Published Year </span></td>
+			<td><span th:text="${book.id}"> Book ID </span></td>
         </tr>
     </tbody>
 </table>

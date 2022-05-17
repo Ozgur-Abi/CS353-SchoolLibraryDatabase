@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link th:href="@{/css/add_book_style.css}" rel="stylesheet" />
+		<title>Give Assignment</title>
+	</head>
+	<body>
+	<div class="container" th:replace="navbar/show :: navbar" ></div>
+		<heading>Give Assignment to a Student</heading>
+		<form id="bookRequest" action="/books/give_assignment" method="post">
+        	    <div>
+					<label id="title">Bilkent ID:</label>
+					<span class="ib"> <input type="text" class="formInput" name="receiverId" id="titleInput" required/></span>
+				</div>
+				<div>
+					<label id="author">Book ID:</label>
+					<span class="ib"> <input type="number" class="formInput" name="bookId" id="authorInput" required/></span>
+				</div>
+				<div>
+					<label id="genre">Assignment:</label>
+					<span class="ib"> <input type="text" class="formInput" name="message" id="genreInput" required/></span>
+				</div>
+				<div>
+				<label id="pubDate">Due Date:</label>
+					<span class="ib"> <input type="date" class="formInput" name="dueDate" id="pubDateInput" required/></span>
+				</div>
+				<div>
+					<input class="picButton" type="submit" value="Send">
+				</div>
+        </form>
+	</body>
+</html>

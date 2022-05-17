@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link th:href="@{/css/view_notifications.css}" rel="stylesheet" />
+	<title>View Assignments</title>
+</head>
+	<body>
+	<div th:replace="navbar/show :: navbar" ></div>
+		<span class="requestPanel">
+			<table>
+				<tbody>
+					<tr th:if="${assignments.empty}">
+						<td colspan="2">No Assignments</td>
+					</tr>
+					<tr th:each="assignment : ${assignments}">
+						<td>
+							<info>
+								<span> Assignment message from </span>
+								<span th:text="${assignment.sender.first_name} + ' ' + ${assignment.sender.last_name} + ':'"></span>
+								<span th:text="${assignment.weight}"></span>
+								<span th:text="'Book Title: ' + ${assignment.assigned_book.title}"></span>
+								<span th:text="'Due Date: ' + ${assignment.due_date}"></span>
+							</info>
+							<br>
+							<br>
+						</td>
+					</tr>
+				</tbody>
+			</table>		
+		</span>
+	</body>
+</html>

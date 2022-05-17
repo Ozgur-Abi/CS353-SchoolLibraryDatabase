@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -31,9 +32,10 @@ public class BookRating implements Serializable {
     @Column(name = "rater_id")
     private long rater_id;
 
-    @Column(columnDefinition = "int(32)")
-    private int score;
 
+
+    @Column(columnDefinition = "int(32) CHECK (score > 0)")
+    private int score;
     @Column(columnDefinition = "varchar(5000)")
     private String comment;
 
